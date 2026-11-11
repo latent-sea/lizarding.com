@@ -32,6 +32,8 @@ export function platform(config, fetchIt = globalThis.fetch.bind(globalThis)) {
       said(await fetchIt(`${config.rest}/rpc/${name}`, { method: "POST", headers: headers(token), body: JSON.stringify(args) })),
     renew: async (refresh) =>
       said(await fetchIt(`${config.auth}/token?grant_type=refresh_token`, { method: "POST", headers: headers(null), body: JSON.stringify({ refresh_token: refresh }) })),
+    user: async (token) =>
+      said(await fetchIt(`${config.auth}/user`, { headers: headers(token) })),
     signIn: async (provider, token, emails, signedIn = null) =>
       said(await fetchIt(`${config.functions}/streamers/sign-in`, { method: "POST", headers: headers(signedIn), body: JSON.stringify({ provider, token, emails }) })),
   };

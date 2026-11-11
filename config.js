@@ -26,11 +26,6 @@ export const CONFIG = Object.freeze({
     { name: "Reddit", icon: "art/icons/reddit.svg", href: "https://www.reddit.com/r/Lizarding" },
   ],
 
-  // The newsletter: Brevo (README, "The newsletter"). `action` is the
-  // address of the Brevo sign-up form's own <form action="...">, from its
-  // "Share" / embed code: public, not a secret. Null until the form exists.
-  newsletter: { action: null },
-
   // The gameplay loops, one for each side of the game the adverts show
   // (release plan, 2026-11-10). Until a loop is captured, its picture stands
   // in: `video` is then the loop's file in art/loops/ (an MP4, muted,

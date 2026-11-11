@@ -15,10 +15,10 @@
 <meta property="og:image" content="https://lizarding.com/art/share.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="home.css?v=49c064e72b3b">
-<script type="module" src="home.js?v=49c064e72b3b"></script>
-<meta name="build" content="49c064e72b3b">
-<script type="module" src="fresh.js?v=49c064e72b3b"></script>
+<link rel="stylesheet" href="home.css?v=be8365994366">
+<script type="module" src="home.js?v=be8365994366"></script>
+<meta name="build" content="be8365994366">
+<script type="module" src="fresh.js?v=be8365994366"></script>
 </head>
 <body>
 <header class="Top">
@@ -61,18 +61,13 @@
   <section class="News" id="news">
     <div class="Panel">
       <h2 class="PanelTitle">The newsletter</h2>
-      <p>One email at each big moment: the Steam page, the demo, Next Fest, launch. Nothing else.</p>
-      <form class="Newsletter" id="newsletter" method="post" target="newsletter-answer">
-        <label class="Field"><span>Email</span><input type="email" name="EMAIL" autocomplete="email" required maxlength="200"></label>
-        <!-- a field people never see, which a bot fills in: Brevo refuses those -->
-        <input class="Unseen" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="hidden" name="locale" value="en">
-        <label class="Consent"><input type="checkbox" name="OPT_IN" value="1" required>
-          <span>Yes, email me Lizarding's newsletter. I can unsubscribe from any email, and I've read the <a href="privacy/">privacy policy</a>. (Brevo sends it.)</span></label>
-        <button class="Button Small" type="submit">Sign up</button>
+      <!-- T-682's words, version 1 (newsletter.js): the same as everywhere Lizarding asks. Typing an address and pressing Yes is the answer. -->
+      <form class="Newsletter" id="newsletter">
+        <p class="QuestionWords" id="newsletter-words"></p>
+        <label class="Field"><span>Your email</span><input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+        <button class="Button Small" type="submit">Yes, email me</button>
         <p class="FormSaid" id="newsletter-said" role="status"></p>
       </form>
-      <iframe name="newsletter-answer" class="Unseen" title="" aria-hidden="true" tabindex="-1"></iframe>
     </div>
     <div class="Panel">
       <h2 class="PanelTitle">Join us</h2>

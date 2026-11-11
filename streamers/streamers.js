@@ -7,13 +7,14 @@
 // the provider and answers a session (platform/functions/streamers). Only the
 // refresh token is kept, in this browser.
 
-import { CONFIG } from "../config.js?v=49c064e72b3b";
-import { platform, signInAddress, newState, rememberAsked, takeReturn, keptRefresh, keepRefresh, forgetRefresh, when, localInput } from "../platform.js?v=49c064e72b3b";
-import { el, followLive, drawComing, safeUrl } from "../live.js?v=49c064e72b3b";
+import { CONFIG } from "../config.js?v=be8365994366";
+import { platform, signInAddress, newState, rememberAsked, takeReturn, keptRefresh, keepRefresh, forgetRefresh, when, localInput } from "../platform.js?v=be8365994366";
+import { el, followLive, drawComing, safeUrl } from "../live.js?v=be8365994366";
+import { newsletter, question, addressForm, stateWords } from "../newsletter.js?v=be8365994366";
 
 const asked = new URLSearchParams(location.search);
 const probing = asked.has("probe");
-if (probing || asked.has("standin")) await (await import("../tests/standin.js?v=49c064e72b3b")).standIn();
+if (probing || asked.has("standin")) await (await import("../tests/standin.js?v=be8365994366")).standIn();
 
 const NAMES = { twitch: "Twitch", youtube: "YouTube" };
 
@@ -28,6 +29,7 @@ export class Streamers {
     this.go = go;
     this.back = back;
     this.api = platform(CONFIG.platform);
+    this.news = newsletter(CONFIG.platform);
     this.access = null;
     this.me = null;
   }
@@ -125,7 +127,7 @@ export class Streamers {
     for (const provider of ["twitch", "youtube"]) {
       if (!this.clients[provider]) this.$(`${provider}-sub`).textContent = "Opens soon";
     }
-    if (!this.me) return;
+    if (!this.me) { this.$("news-ask").hidden = true; return; }
     const me = this.me;
     this.$("channels").replaceChildren(...me.channels.map((c) =>
       el("a", { class: "Channel", href: safeUrl(c.url) ?? "#", target: "_blank", rel: "noopener" },
@@ -143,6 +145,45 @@ export class Streamers {
     this.$("next-said").textContent = me.next_stream_at ? `Set for ${new Date(me.next_stream_at).toLocaleString(undefined, { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })} (${when(me.next_stream_at)}), in your own time zone. It shows under Coming up.` : "Not set.";
     this.$("next").value = me.next_stream_at ? localInput(new Date(me.next_stream_at)) : "";
     this.$("mine-emails").checked = me.emails;
+    await this.drawNews();
+  }
+
+  // Lizarding news (T-682): the question, asked once, right after signing in, when the platform says to ask; the
+  // streamer page waits for the answer. Then a row on the page that shows the answer and changes it. All of it hidden
+  // until the platform's newsletter is set up. It is apart from the streamer emails, which are this list's own consent.
+  async drawNews() {
+    let news;
+    try { news = await this.news.me(this.access); } catch { news = { configured: false }; }
+    this.newsState = news;
+    const asking = news.configured && news.ask;
+    this.$("news-ask").hidden = !asking;
+    this.$("mine").hidden = asking;
+    this.$("news-part").hidden = !news.configured || asking;
+    if (!news.configured) return;
+    if (asking) {
+      this.$("news-ask-body").replaceChildren(question((yes) => this.newsAnswer(yes, "news-ask-body"), { idPrefix: "news-ask" }));
+      return;
+    }
+    const row = [el("p", { id: "news-said" }, stateWords(news))];
+    if (news.state === "yes" || news.state === "waiting") {
+      row.push(el("button", { class: "Button Small Danger", type: "button", id: "news-stop", onclick: () => this.act(() => this.news.leave({ source: "streamers", token: this.access }), "Lizarding news stopped.") }, "Stop the emails"));
+    } else {
+      row.push(question((yes) => this.newsAnswer(yes, "news-row"), { idPrefix: "news-row" }));
+    }
+    this.$("news-row").replaceChildren(...row);
+  }
+
+  async newsAnswer(yes, place) {
+    if (!yes) {
+      await this.act(() => this.news.answer({ source: "streamers", yes: false, token: this.access }), "No Lizarding news: nothing else changes.");
+      return;
+    }
+    // a Yes asks for the address, filled in with the account's own, changeable
+    let email = "";
+    try { email = (await this.api.user(this.access))?.email ?? ""; } catch { email = ""; }
+    this.$(place).replaceChildren(addressForm((address) => this.act(
+      () => this.news.answer({ source: "streamers", yes: true, email: address, token: this.access }),
+      "Check your email for the link to confirm."), { email, idPrefix: place }));
   }
 
   async act(work, words) {
@@ -187,6 +228,6 @@ const page = new Streamers(document, probing ? { go: (url) => { globalThis.__wen
 await page.start();
 
 if (probing) {
-  const { Probe } = await import("./probe.js?v=49c064e72b3b");
+  const { Probe } = await import("./probe.js?v=be8365994366");
   await new Probe(document, page).run();
 }

@@ -1,12 +1,13 @@
 // lizarding.com's page: what config.js names, drawn in; who is live; the newsletter's form.
 
-import { CONFIG } from "./config.js?v=49c064e72b3b";
-import { platform } from "./platform.js?v=49c064e72b3b";
-import { el, followLive } from "./live.js?v=49c064e72b3b";
+import { CONFIG } from "./config.js?v=be8365994366";
+import { platform } from "./platform.js?v=be8365994366";
+import { el, followLive } from "./live.js?v=be8365994366";
+import { newsletter, WORDS } from "./newsletter.js?v=be8365994366";
 
 // ?standin plays against the stand-in platform (tests/standin.js), for a person to try; ?probe walks the page
 const asked = new URLSearchParams(location.search);
-if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=49c064e72b3b")).standIn();
+if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=be8365994366")).standIn();
 
 function storeButton(store) {
   const face = [el("span", { class: "Call" }, store.call), el("span", { class: "Sub" }, store.href ? store.name : "Store page coming soon")];
@@ -48,19 +49,25 @@ export function draw(doc = document) {
 function drawNewsletter(doc) {
   const form = doc.getElementById("newsletter");
   const said = doc.getElementById("newsletter-said");
-  if (!CONFIG.newsletter.action) {
-    for (const field of form.querySelectorAll("input, button")) field.disabled = true;
-    said.textContent = "The newsletter opens soon.";
-    return;
-  }
-  form.action = CONFIG.newsletter.action;
-  // the form goes to Brevo in the frame beside it, so this page stays; Brevo then emails a link to confirm
-  form.addEventListener("submit", () => {
+  doc.getElementById("newsletter-words").textContent = WORDS;
+  const api = newsletter(CONFIG.platform);
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = form.elements.email.value.trim();
+    const button = form.querySelector("button");
+    button.disabled = true;
+    said.classList.remove("Warn");
     said.textContent = "Sending…";
-    doc.querySelector("iframe[name=newsletter-answer]").addEventListener("load", () => {
-      said.textContent = "Nearly there: open the email we've just sent and confirm.";
-      form.reset();
-    }, { once: true });
+    try {
+      const answer = await api.answer({ source: "landing", yes: true, email });
+      if (!answer.configured) said.textContent = "The newsletter opens soon. Thanks for wanting it: try again in a few days.";
+      // the same answer whether the address is new, waiting or listed already, so no one learns who is on the list
+      else { said.textContent = "Check your email for the link to confirm."; form.reset(); }
+    } catch (error) {
+      said.classList.add("Warn");
+      said.textContent = error.status === 429 ? "That's a lot of tries at once: wait a few minutes." : `That didn't work: ${error.message}`;
+    }
+    button.disabled = false;
   });
 }
 
@@ -71,6 +78,6 @@ followLive(document.getElementById("live-grid"), platform(CONFIG.platform), {
 });
 
 if (asked.has("probe")) {
-  const { Probe } = await import("./probe.js?v=49c064e72b3b");
+  const { Probe } = await import("./probe.js?v=be8365994366");
   new Probe(document).run();
 }

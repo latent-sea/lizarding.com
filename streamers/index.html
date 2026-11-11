@@ -51,6 +51,13 @@
     <p class="Quiet">Signing in lists your channel when you stream Lizarding, and keeps your channel's name, picture and address, and your email, as the <a href="../privacy/">privacy policy</a> says. You can leave the list at any time, which deletes them.</p>
   </section>
 
+  <!-- signed in, asked once (T-682): the streamer page waits for the answer -->
+  <section class="Panel" id="news-ask" hidden>
+    <h2 class="PanelTitle">One question first</h2>
+    <p class="Quiet">Apart from the streamer emails: this is Lizarding's newsletter, for everyone. Either answer is fine.</p>
+    <div id="news-ask-body"></div>
+  </section>
+
   <!-- signed in: the streamer's own page -->
   <section class="Panel" id="mine" hidden>
     <h2 class="PanelTitle">Your streamer page</h2>
@@ -75,6 +82,11 @@
 
     <h3 class="Engraving">Emails</h3>
     <label class="Consent"><input type="checkbox" id="mine-emails"><span>Email me keys, Next Fest news and streamer waves. Every email says how to stop them.</span></label>
+
+    <div id="news-part" hidden>
+      <h3 class="Engraving">Lizarding news</h3>
+      <div id="news-row"></div>
+    </div>
 
     <div class="Row">
       <button class="Button Small" id="sign-out" type="button">Sign out</button>
