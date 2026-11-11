@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#08070f">
+<title>Lizarding for streamers: live now, and get listed</title>
+<meta name="description" content="Who is streaming Lizarding right now, on Twitch and YouTube. Streamers: sign in with your channel to be listed, get keys and hear about Next Fest.">
+<link rel="canonical" href="https://lizarding.com/streamers/">
+<meta property="og:title" content="Lizarding for streamers">
+<meta property="og:image" content="https://lizarding.com/art/share.png">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../home.css">
+<script type="module" src="streamers.js"></script>
+</head>
+<body>
+<header class="Top">
+  <a class="TopMark" href="../">Lizarding</a>
+  <nav class="TopNav">
+    <a href="../#loops">The game</a>
+    <a href="../#news">News</a>
+    <a href="./" aria-current="page">Streamers</a>
+  </nav>
+</header>
+
+<main class="Page Wide">
+  <h1 class="PageTitle">Streaming Lizarding</h1>
+  <p class="Banner" id="said" role="status" hidden></p>
+
+  <section>
+    <h2 class="Engraving">Live now</h2>
+    <div class="LiveGrid" id="live-grid"><p class="Quiet">Looking for live streams…</p></div>
+  </section>
+
+  <section>
+    <h2 class="Engraving">Coming up</h2>
+    <div class="ComingList" id="coming"><p class="Quiet">…</p></div>
+  </section>
+
+  <!-- signed out: how to join -->
+  <section class="Panel" id="join" hidden>
+    <h2 class="PanelTitle">Stream Lizarding? Get listed.</h2>
+    <p>Sign in with your Twitch or YouTube channel. Whenever you stream with <strong>Lizarding</strong> in your stream's title, you're listed under Live now, by itself: on Twitch within two minutes, on YouTube as soon as YouTube tells us of your stream. You can also set when you're next live.</p>
+    <label class="Consent"><input type="checkbox" id="emails">
+      <span id="emails-words">Email me about Lizarding as a streamer: keys, Next Fest news and streamer waves. At most a few a month; every email says how to stop them.</span></label>
+    <div class="SignIns">
+      <button class="Button Twitch" id="twitch" type="button"><img src="../art/icons/twitch.svg" alt=""><span class="Stack"><span class="Call">Sign in with Twitch</span><span class="Sub" id="twitch-sub">Proves your channel; gives us your email</span></span></button>
+      <button class="Button YouTube" id="youtube" type="button"><img src="../art/icons/youtube.svg" alt=""><span class="Stack"><span class="Call">Sign in with YouTube</span><span class="Sub" id="youtube-sub">With Google: proves your channel; gives us your email</span></span></button>
+    </div>
+    <p class="Quiet">Signing in lists your channel when you stream Lizarding, and keeps your channel's name, picture and address, and your email, as the <a href="../privacy/">privacy policy</a> says. You can leave the list at any time, which deletes them.</p>
+  </section>
+
+  <!-- signed in: the streamer's own page -->
+  <section class="Panel" id="mine" hidden>
+    <h2 class="PanelTitle">Your streamer page</h2>
+    <div class="Channels" id="channels"></div>
+    <div class="Row" id="add"></div>
+
+    <h3 class="Engraving">Live with Lizarding</h3>
+    <p id="live-said">Put <strong>Lizarding</strong> in your stream's title and we find you by ourselves.</p>
+    <div class="Row">
+      <button class="Button Small" id="im-live" type="button">I'm live with Lizarding</button>
+      <button class="Button Small Danger" id="not-live" type="button" hidden>I've stopped</button>
+    </div>
+    <p class="Quiet">Not listed after a couple of minutes? Press it: you're listed for 4 hours, or until you say you've stopped.</p>
+
+    <h3 class="Engraving">Your next stream</h3>
+    <div class="Row">
+      <input type="datetime-local" id="next" aria-label="Your next stream">
+      <button class="Button Small" id="next-save" type="button">Save</button>
+      <button class="Button Small Danger" id="next-clear" type="button">Clear</button>
+    </div>
+    <p class="Quiet" id="next-said"></p>
+
+    <h3 class="Engraving">Emails</h3>
+    <label class="Consent"><input type="checkbox" id="mine-emails"><span>Email me keys, Next Fest news and streamer waves. Every email says how to stop them.</span></label>
+
+    <div class="Row">
+      <button class="Button Small" id="sign-out" type="button">Sign out</button>
+      <button class="Button Small Danger" id="leave" type="button">Leave the streamer list</button>
+    </div>
+  </section>
+</main>
+
+<footer class="Foot">
+  <a href="../privacy/">Privacy</a>
+  <a href="../press/">Press kit</a>
+  <span>© 2026 Latentsea · Lizarding uses play money only.</span>
+</footer>
+</body>
+</html>

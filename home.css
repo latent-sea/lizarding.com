@@ -1,0 +1,135 @@
+/* lizarding.com wears Lizarding's own look, the web game's (sites/lizarding/
+   lizarding.css): the desktop's tote cabinet - enamel cards on a night page,
+   brass edges, amber figures, neon titles, cream words. Phones first. */
+
+:root {
+  --night: #08070f; --enamel: #1a1733; --enamel-dark: #120f24; --lit: #2e2a52;
+  --cream: #e9e3d2; --soft: #837fb0; --brass: #9a8043; --engraved: #c9b277;
+  --amber: #ffc752; --neon: #ff80b8; --teal: #47ebc7;
+  --radius: 10px; --gap: 16px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; background: var(--night); color: var(--cream); }
+body { font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
+a { color: var(--teal); }
+img, video { max-width: 100%; display: block; }
+main { max-width: 72rem; margin: 0 auto; padding: 0 16px 3rem; display: grid; gap: 40px; }
+h1, h2, h3, p { margin: 0; }
+.Quiet { color: var(--soft); }
+
+/* the bar along the top */
+.Top { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px; background: rgb(8 7 15 / 0.9); border-bottom: 2px solid var(--brass); backdrop-filter: blur(6px); }
+.TopMark { color: var(--neon); font-weight: 800; font-size: 1.25rem; letter-spacing: 0.04em; text-decoration: none; }
+.TopNav { display: flex; gap: 16px; flex-wrap: wrap; }
+.TopNav a { color: var(--cream); text-decoration: none; font-size: 0.95rem; }
+.TopNav a:hover, .TopNav a[aria-current] { color: var(--amber); }
+
+/* the first screen */
+.Hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 28px; align-items: center; }
+.Wordmark { font-size: clamp(2.6rem, 11vw, 5rem); font-weight: 800; color: var(--neon); line-height: 1; letter-spacing: 0.02em;
+  text-shadow: 0 0 18px rgb(255 128 184 / 0.5); }
+.Pitch { margin-top: 16px; font-size: 1.12rem; max-width: 36rem; }
+.HeroArt { margin: 0; border: 2px solid var(--brass); border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 40px rgb(255 128 184 / 0.12); }
+.HeroArt img { width: 100%; height: auto; }
+@media (min-width: 56rem) { .Hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); padding-top: 48px; } }
+
+/* buttons: the cabinet's fruit buttons - an edge in the button's colour, filled faintly */
+.Buy { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 10px; margin-top: 22px; max-width: 34rem; }
+.Button { display: flex; flex-direction: column; justify-content: center; gap: 2px; min-height: 52px; padding: 8px 16px; border-radius: 8px;
+  border: 2px solid var(--lit); background: rgb(46 42 82 / 0.4); color: var(--cream); text-decoration: none; font: inherit; cursor: pointer; text-align: left; }
+.Button:hover { background: rgb(46 42 82 / 0.8); }
+.Button .Call { font-weight: 700; }
+.Button .Sub { font-size: 0.82rem; color: var(--soft); }
+.Button.Store { border-color: var(--amber); background: rgb(255 199 82 / 0.14); }
+.Button.Store .Call { color: var(--amber); }
+.Button.Play { margin-top: 10px; max-width: 34rem; border-color: var(--teal); background: rgb(71 235 199 / 0.14); }
+.Button.Play .Call { color: var(--teal); }
+.Button.Soon { cursor: default; opacity: 0.75; }
+.Button.Soon:hover { background: rgb(46 42 82 / 0.4); }
+.Button.Store.Soon:hover { background: rgb(255 199 82 / 0.14); }
+.Button.Small { min-height: 44px; display: inline-flex; width: auto; font-weight: 700; border-color: var(--amber); color: var(--amber); background: rgb(255 199 82 / 0.14); }
+.Button:disabled, .Button[aria-disabled="true"] { cursor: default; }
+.Button:disabled { opacity: 0.5; }
+input:disabled { opacity: 0.6; }
+.Button.Discord { flex-direction: row; align-items: center; gap: 12px; flex-wrap: wrap; border-color: #5865f2; background: rgb(88 101 242 / 0.14); }
+.Button.Discord img { width: 28px; height: 28px; }
+
+/* section heads: the cabinet's engraved brass labels */
+.Engraving { color: var(--engraved); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+.SectionHead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.More { color: var(--amber); font-size: 0.95rem; }
+
+/* the gameplay loops: a picture until each loop is captured */
+.LoopGrid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+.Loop { margin: 0; background: var(--enamel); border: 2px solid var(--brass); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.LoopFrame { aspect-ratio: 16 / 9; background: var(--enamel-dark); overflow: hidden; }
+.LoopFrame img, .LoopFrame video { width: 100%; height: 100%; object-fit: cover; }
+.Loop figcaption { padding: 12px 14px 16px; display: grid; gap: 4px; }
+.Loop h3 { color: var(--neon); font-size: 1.1rem; }
+.Loop p { font-size: 0.95rem; }
+
+/* live now */
+.LiveGrid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); }
+.LiveCard { display: flex; flex-direction: column; text-decoration: none; color: var(--cream); background: var(--enamel); border: 2px solid var(--lit); border-radius: var(--radius); overflow: hidden; }
+.LiveCard:hover { border-color: var(--neon); }
+.Thumb { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(135deg, var(--enamel-dark), var(--lit)); }
+.Thumb img { width: 100%; height: 100%; object-fit: cover; }
+.LiveBadge { position: absolute; top: 8px; left: 8px; padding: 1px 8px; border-radius: 4px; background: #e5294f; color: #fff; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; }
+.LiveWords { padding: 10px 12px 12px; display: grid; gap: 2px; min-width: 0; }
+.LiveName { display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--amber); }
+.LiveTitle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.LiveMeta { font-size: 0.85rem; color: var(--soft); }
+.LiveCard.Said .LiveMeta { font-style: italic; }
+.PlatformIcon { width: 18px; height: 18px; flex: none; }
+.ComingList { display: grid; gap: 8px; }
+.ComingRow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 10px 12px; background: var(--enamel); border: 1px solid var(--lit); border-radius: 8px; color: var(--cream); text-decoration: none; }
+.ComingRow:hover { border-color: var(--teal); }
+.ComingName { font-weight: 700; color: var(--amber); }
+.ComingWhen { color: var(--soft); font-size: 0.92rem; }
+
+/* newsletter and community */
+.News { display: grid; gap: var(--gap); }
+@media (min-width: 52rem) { .News { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
+.Panel { background: var(--enamel); border: 2px solid var(--brass); border-radius: var(--radius); padding: 18px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.PanelTitle { color: var(--neon); font-size: 1.3rem; }
+.Newsletter { display: grid; gap: 12px; position: relative; }
+.Field { display: grid; gap: 4px; font-size: 0.9rem; color: var(--soft); }
+input[type=email], input[type=datetime-local], input[type=text] { font: inherit; color: var(--cream); background: var(--enamel-dark); border: 1px solid var(--lit); border-radius: 8px; padding: 10px 12px; min-height: 44px; width: 100%; }
+input:focus-visible, .Button:focus-visible, a:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.Consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; }
+.Consent input { margin-top: 4px; width: 20px; height: 20px; flex: none; accent-color: var(--teal); }
+.FormSaid { color: var(--teal); min-height: 1.5em; }
+.FormSaid.Warn { color: var(--neon); }
+.Unseen { position: absolute !important; left: 0; top: 0; width: 1px !important; height: 1px !important; min-height: 0 !important; overflow: hidden; clip: rect(0 0 0 0); border: 0; padding: 0; }
+.Socials { display: flex; flex-wrap: wrap; gap: 8px; }
+.Social { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px; border: 1px solid var(--lit); border-radius: 8px; color: var(--cream); text-decoration: none; background: var(--enamel-dark); }
+.Social:hover { border-color: var(--amber); }
+.Social img { width: 20px; height: 20px; }
+
+/* the foot */
+.Foot { border-top: 2px solid var(--brass); padding: 18px 16px 28px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; font-size: 0.9rem; color: var(--soft); }
+.Foot a { color: var(--cream); }
+
+/* the pages beside it: streamers, privacy, press */
+.Page { max-width: 48rem; margin: 0 auto; padding: 28px 16px 3rem; display: grid; gap: 28px; }
+.Page.Wide { max-width: 72rem; }
+.PageTitle { color: var(--neon); font-size: clamp(1.8rem, 7vw, 2.6rem); line-height: 1.1; text-shadow: 0 0 14px rgb(255 128 184 / 0.4); }
+.Prose { display: grid; gap: 12px; }
+.Prose h2 { color: var(--amber); font-size: 1.15rem; margin-top: 12px; }
+.Prose ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 6px; }
+.Banner { padding: 10px 14px; border-radius: 8px; background: rgb(255 128 184 / 0.14); color: var(--neon); }
+.Banner.Good { background: rgb(71 235 199 / 0.14); color: var(--teal); }
+.SignIns { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.Button.Twitch { border-color: #9146ff; background: rgb(145 70 255 / 0.16); flex-direction: row; align-items: center; gap: 10px; }
+.Button.YouTube { border-color: #ff0000; background: rgb(255 0 0 / 0.12); flex-direction: row; align-items: center; gap: 10px; }
+.Button.Twitch img, .Button.YouTube img { width: 24px; height: 24px; }
+.Button .Stack { display: grid; }
+.Channels { display: flex; flex-wrap: wrap; gap: 8px; }
+.Channel { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--lit); border-radius: 8px; background: var(--enamel-dark); color: var(--cream); text-decoration: none; }
+.Channel img.Avatar { width: 24px; height: 24px; border-radius: 50%; }
+.Row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.Row input[type=datetime-local] { width: auto; flex: 1 1 14rem; }
+.Danger { border-color: var(--neon) !important; color: var(--neon) !important; background: transparent !important; }

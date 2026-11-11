@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#08070f">
+<title>Lizarding: breed them, race them, watch the chaos</title>
+<meta name="description" content="Breed them. Race them. Watch the chaos! Every lizard carries real genes that shape its body and mind: how it sprints, leaps, swims and fights, and no two races ever play out the same.">
+<link rel="canonical" href="https://lizarding.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lizarding">
+<meta property="og:description" content="Breed them. Race them. Watch the chaos! Every lizard carries real genes that shape its body and mind.">
+<meta property="og:url" content="https://lizarding.com/">
+<meta property="og:image" content="https://lizarding.com/art/share.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="home.css?v=49c064e72b3b">
+<script type="module" src="home.js?v=49c064e72b3b"></script>
+<meta name="build" content="49c064e72b3b">
+<script type="module" src="fresh.js?v=49c064e72b3b"></script>
+</head>
+<body>
+<header class="Top">
+  <a class="TopMark" href="./">Lizarding</a>
+  <nav class="TopNav">
+    <a href="#loops">The game</a>
+    <a href="#news">News</a>
+    <a href="streamers/">Streamers</a>
+  </nav>
+</header>
+
+<main>
+  <section class="Hero">
+    <div class="HeroWords">
+      <h1 class="Wordmark">LIZARDING</h1>
+      <!-- the short description, Ian-approved (marketing/positioning.md): not to be reworded here -->
+      <p class="Pitch">Breed them. Race them. Watch the chaos! Every lizard carries real genes that shape its body and mind: how it sprints, leaps, swims and fights, and no two races ever play out the same. Build a bloodline of champions, battle rival stables up the ladder, or back a winner and scream it home.</p>
+      <div class="Buy" id="stores"></div>
+      <a class="Button Play" id="play" href="https://play.lizarding.com/">
+        <span class="Call">Play in your browser</span>
+        <span class="Sub">The betting game, free, no install</span>
+      </a>
+    </div>
+    <figure class="HeroArt"><img src="art/race-close.jpg" alt="Lizards racing across a stage" width="960" height="540"></figure>
+  </section>
+
+  <section class="Loops" id="loops" aria-label="The game">
+    <h2 class="Engraving">The game</h2>
+    <div class="LoopGrid" id="loop-grid"></div>
+  </section>
+
+  <section class="Live" id="live">
+    <div class="SectionHead">
+      <h2 class="Engraving">Live now</h2>
+      <a class="More" href="streamers/">Streamers: get listed</a>
+    </div>
+    <div class="LiveGrid" id="live-grid"><p class="Quiet">Looking for live streams…</p></div>
+  </section>
+
+  <section class="News" id="news">
+    <div class="Panel">
+      <h2 class="PanelTitle">The newsletter</h2>
+      <p>One email at each big moment: the Steam page, the demo, Next Fest, launch. Nothing else.</p>
+      <form class="Newsletter" id="newsletter" method="post" target="newsletter-answer">
+        <label class="Field"><span>Email</span><input type="email" name="EMAIL" autocomplete="email" required maxlength="200"></label>
+        <!-- a field people never see, which a bot fills in: Brevo refuses those -->
+        <input class="Unseen" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="locale" value="en">
+        <label class="Consent"><input type="checkbox" name="OPT_IN" value="1" required>
+          <span>Yes, email me Lizarding's newsletter. I can unsubscribe from any email, and I've read the <a href="privacy/">privacy policy</a>. (Brevo sends it.)</span></label>
+        <button class="Button Small" type="submit">Sign up</button>
+        <p class="FormSaid" id="newsletter-said" role="status"></p>
+      </form>
+      <iframe name="newsletter-answer" class="Unseen" title="" aria-hidden="true" tabindex="-1"></iframe>
+    </div>
+    <div class="Panel">
+      <h2 class="PanelTitle">Join us</h2>
+      <a class="Button Discord" id="discord" href="#"><img src="art/icons/discord.svg" alt=""><span class="Call">Discord</span><span class="Sub" id="discord-sub"></span></a>
+      <div class="Socials" id="socials"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="Foot">
+  <a href="privacy/">Privacy</a>
+  <a href="press/">Press kit</a>
+  <a id="contact" href="mailto:dev-latent-sea@proton.me">Contact</a>
+  <span>© 2026 Latentsea · Lizarding uses play money only.</span>
+</footer>
+</body>
+</html>
