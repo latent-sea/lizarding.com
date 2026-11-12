@@ -47,6 +47,16 @@ h1, h2, h3, p { margin: 0; }
 .Button.Store .Call { color: var(--amber); }
 .Button.Play { margin-top: 10px; max-width: 34rem; border-color: var(--teal); background: rgb(71 235 199 / 0.14); }
 .Button.Play .Call { color: var(--teal); }
+/* Ian, 12 Nov: "make the Play in browser glow with oscillating intensity": a slow 2 s pulse in its teal, a
+   box-shadow only, so nothing around it moves; held steady for anyone who asks for less motion */
+@keyframes play-glow {
+  0%, 100% { box-shadow: 0 0 6px 1px rgb(71 235 199 / 0.25), 0 0 14px 2px rgb(71 235 199 / 0.12); }
+  50% { box-shadow: 0 0 16px 4px rgb(71 235 199 / 0.65), 0 0 34px 10px rgb(71 235 199 / 0.3); }
+}
+.Button.Play { animation: play-glow 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .Button.Play { animation: none; box-shadow: 0 0 12px 3px rgb(71 235 199 / 0.45), 0 0 26px 6px rgb(71 235 199 / 0.2); }
+}
 .Button.Soon { cursor: default; opacity: 0.75; }
 .Button.Soon:hover { background: rgb(46 42 82 / 0.4); }
 .Button.Store.Soon:hover { background: rgb(255 199 82 / 0.14); }
