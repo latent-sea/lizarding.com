@@ -33,7 +33,7 @@ export const CONFIG = Object.freeze({
   loops: [
     { key: "chaos", heading: "The chaos", said: "Ten lizards on one stage: they leap, swim, sprint and pick fights. No two races play out the same.", art: "art/jungle-canopy.jpg", video: null },
     { key: "genes", heading: "From the genes up", said: "Each lizard's genes build its body and its mind: how it runs, when it sprints, whether it starts a fight. And they pass to its young.", art: "art/highrise-moon.jpg", video: null },
-    { key: "form", heading: "Form that's true", said: "Every figure on the race card comes from races run by the same simulation you watch. Reading form works because form is real.", art: "art/sprint.jpg", video: null },
+    { key: "form", heading: "Form that's true", said: "Every figure on the race card comes from races run by the same simulation you watch. Reading form works because form is real.", art: "art/race-card.jpg", video: null },
     { key: "ladder", heading: "Battle the ladder", said: "Pick five of your lizards for each of six races against another player. The most points moves you up the ladder.", art: "art/wales-finish.jpg", video: null },
     { key: "bet", heading: "Back a winner", said: "Study the field, back a lizard to win or to place, and scream it home. Play money only.", art: "art/big-dive.jpg", video: null },
   ],
