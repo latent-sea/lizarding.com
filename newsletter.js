@@ -4,7 +4,7 @@
 // `newsletter` function (platform/functions/newsletter), which keeps it with
 // its words and time and hands a Yes to Brevo's double opt-in.
 
-import { el } from "./live.js?v=560fe2f3ff9c";
+import { el } from "./live.js?v=9ac6e26a5128";
 
 // Version 1, word for word as the function keeps it. A new wording is a new version, never an edit.
 export const WORDS_VERSION = 1;
