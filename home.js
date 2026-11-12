@@ -1,13 +1,13 @@
 // lizarding.com's page: what config.js names, drawn in; who is live; the newsletter's form.
 
-import { CONFIG } from "./config.js?v=62983d8b08a1";
-import { platform } from "./platform.js?v=62983d8b08a1";
-import { el, followLive } from "./live.js?v=62983d8b08a1";
-import { newsletter, WORDS } from "./newsletter.js?v=62983d8b08a1";
+import { CONFIG } from "./config.js?v=560fe2f3ff9c";
+import { platform } from "./platform.js?v=560fe2f3ff9c";
+import { el, followLive } from "./live.js?v=560fe2f3ff9c";
+import { newsletter, WORDS } from "./newsletter.js?v=560fe2f3ff9c";
 
 // ?standin plays against the stand-in platform (tests/standin.js), for a person to try; ?probe walks the page
 const asked = new URLSearchParams(location.search);
-if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=62983d8b08a1")).standIn();
+if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=560fe2f3ff9c")).standIn();
 
 function storeButton(store) {
   const face = [el("span", { class: "Call" }, store.call), el("span", { class: "Sub" }, store.href ? store.name : "Store page coming soon")];
@@ -79,6 +79,6 @@ followLive(document.getElementById("live-grid"), platform(CONFIG.platform), {
 });
 
 if (asked.has("probe")) {
-  const { Probe } = await import("./probe.js?v=62983d8b08a1");
+  const { Probe } = await import("./probe.js?v=560fe2f3ff9c");
   new Probe(document).run();
 }
