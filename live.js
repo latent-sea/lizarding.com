@@ -1,7 +1,7 @@
 // Live now and Coming up: the streams the platform lists (sites/lizarding/backend.sql,
 // lizarding_live and lizarding_coming_up), drawn as cards, one tap to watch.
 
-import { when, viewers } from "./platform.js?v=d26853c81d40";
+import { when, viewers } from "./platform.js?v=1c1e037b08cd";
 
 export function el(tag, attrs = {}, ...children) {
   const node = document.createElement(tag);
@@ -46,13 +46,14 @@ export function comingRow(item, base = "") {
 }
 
 // Fill a place with who is live, again every minute; `limit` cards at most
-export function followLive(place, api, { limit = 0, base = "", empty } = {}) {
+export function followLive(place, api, { limit = 0, base = "", empty, counted = () => {} } = {}) {
   async function draw() {
     let streams;
     try { streams = await api.rpc("lizarding_live"); } catch { return; } // kept as it was until the platform answers
     const shown = limit ? streams.slice(0, limit) : streams;
     place.replaceChildren(...(shown.length ? shown.map((s) => liveCard(s, base)) : [empty()]));
     place.dataset.count = String(streams.length);
+    counted(streams.length);
   }
   draw();
   return setInterval(draw, 60_000);

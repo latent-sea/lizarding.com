@@ -1,13 +1,13 @@
 // lizarding.com's page: what config.js names, drawn in; who is live; the newsletter's form.
 
-import { CONFIG } from "./config.js?v=d26853c81d40";
-import { platform } from "./platform.js?v=d26853c81d40";
-import { el, followLive } from "./live.js?v=d26853c81d40";
-import { newsletter, WORDS } from "./newsletter.js?v=d26853c81d40";
+import { CONFIG } from "./config.js?v=1c1e037b08cd";
+import { platform } from "./platform.js?v=1c1e037b08cd";
+import { el, followLive } from "./live.js?v=1c1e037b08cd";
+import { newsletter, WORDS } from "./newsletter.js?v=1c1e037b08cd";
 
 // ?standin plays against the stand-in platform (tests/standin.js), for a person to try; ?probe walks the page
 const asked = new URLSearchParams(location.search);
-if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=d26853c81d40")).standIn();
+if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=1c1e037b08cd")).standIn();
 
 function storeButton(store) {
   const face = [el("span", { class: "Call" }, store.call), el("span", { class: "Sub" }, store.href ? store.name : "Store page coming soon")];
@@ -73,12 +73,14 @@ function drawNewsletter(doc) {
 }
 
 draw();
+// Live now stands high on the page while anyone is live, and is gone while nobody is
 followLive(document.getElementById("live-grid"), platform(CONFIG.platform), {
   limit: 6,
+  counted: (count) => { document.getElementById("live").hidden = count === 0; },
   empty: () => el("p", { class: "Quiet" }, "No one is live with Lizarding right now. ", el("a", { href: "streamers/" }, "Streamers, get listed here.")),
 });
 
 if (asked.has("probe")) {
-  const { Probe } = await import("./probe.js?v=d26853c81d40");
+  const { Probe } = await import("./probe.js?v=1c1e037b08cd");
   new Probe(document).run();
 }

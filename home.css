@@ -150,3 +150,9 @@ input:focus-visible, .Button:focus-visible, a:focus-visible { outline: 2px solid
 .Choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 28rem; }
 .Button.Small.Choice { justify-content: center; color: var(--cream); border-color: var(--lit); background: rgb(46 42 82 / 0.4); }
 .Button.Small.Choice:hover { background: rgb(46 42 82 / 0.8); }
+
+/* Ian, 12 Nov: everyone worldwide made plain; Live now high on the page, hidden while nobody is live */
+.Worldwide { margin: 12px 0 0; max-width: 34rem; color: var(--teal); font-weight: 600; }
+.Live[hidden] { display: none; }
+.Live { border: 1px solid rgb(255 64 96 / 0.55); border-radius: 14px; padding: 14px; background: rgb(255 64 96 / 0.06); }
+.LiveDot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ff4060; margin-right: 8px; vertical-align: middle; box-shadow: 0 0 8px #ff4060; }

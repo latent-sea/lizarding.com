@@ -15,10 +15,10 @@
 <meta property="og:image" content="https://lizarding.com/art/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="home.css?v=d26853c81d40">
-<script type="module" src="home.js?v=d26853c81d40"></script>
-<meta name="build" content="d26853c81d40">
-<script type="module" src="fresh.js?v=d26853c81d40"></script>
+<link rel="stylesheet" href="home.css?v=1c1e037b08cd">
+<script type="module" src="home.js?v=1c1e037b08cd"></script>
+<meta name="build" content="1c1e037b08cd">
+<script type="module" src="fresh.js?v=1c1e037b08cd"></script>
 </head>
 <body>
 <header class="Top">
@@ -41,21 +41,24 @@
         <span class="Call">Play in your browser</span>
         <span class="Sub">The betting game, free, no install</span>
       </a>
+      <!-- Ian, 12 Nov: that you play against everyone, worldwide, made plain; and the leagues -->
+      <p class="Worldwide" id="worldwide">You race everyone, worldwide: every player bets on the same race at the same time. Climb the hourly, daily, weekly and monthly leagues, or make one for your friends.</p>
     </div>
     <figure class="HeroArt"><img src="art/canyon-sun.jpg" alt="A pink lizard leaps the canyon in front of a setting sun as the field races the rims" width="1280" height="720"></figure>
+  </section>
+
+  <!-- who is live with Lizarding, high on the page (Ian, 12 Nov); hidden while nobody is: never an empty box -->
+  <section class="Live" id="live" hidden>
+    <div class="SectionHead">
+      <h2 class="Engraving"><span class="LiveDot" aria-hidden="true"></span>Live now</h2>
+      <a class="More" href="streamers/">Streamers: get listed</a>
+    </div>
+    <div class="LiveGrid" id="live-grid"></div>
   </section>
 
   <section class="Loops" id="loops" aria-label="The game">
     <h2 class="Engraving">The game</h2>
     <div class="LoopGrid" id="loop-grid"></div>
-  </section>
-
-  <section class="Live" id="live">
-    <div class="SectionHead">
-      <h2 class="Engraving">Live now</h2>
-      <a class="More" href="streamers/">Streamers: get listed</a>
-    </div>
-    <div class="LiveGrid" id="live-grid"><p class="Quiet">Looking for live streams…</p></div>
   </section>
 
   <section class="News" id="news">
