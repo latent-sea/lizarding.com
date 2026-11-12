@@ -11,10 +11,10 @@
 // dispatch made while any bell is sounding is refused out loud; a listener
 // that must act on what it heard defers it (Frames.defer).
 
-import { Chimes } from "./chimes.js?v=0d53d5685bf1";
-import { Controller } from "./controller.js?v=0d53d5685bf1";
-import { Phrase } from "./phrase.js?v=0d53d5685bf1";
-import { Reads } from "./reads.js?v=0d53d5685bf1";
+import { Chimes } from "./chimes.js?v=a33c41d3e42a";
+import { Controller } from "./controller.js?v=a33c41d3e42a";
+import { Phrase } from "./phrase.js?v=a33c41d3e42a";
+import { Reads } from "./reads.js?v=a33c41d3e42a";
 
 export class Commands extends Controller {
   static COMMAND_RAN = "command_ran";

@@ -5,8 +5,8 @@
 // Striking an address nobody has hung is quiet by design: the screen that
 // asked may have closed before the answer came.
 
-import { Bell } from "./bell.js?v=0d53d5685bf1";
-import { Reads } from "./reads.js?v=0d53d5685bf1";
+import { Bell } from "./bell.js?v=a33c41d3e42a";
+import { Reads } from "./reads.js?v=a33c41d3e42a";
 
 export const GLOBAL = "global";
 
