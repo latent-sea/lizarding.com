@@ -14,8 +14,8 @@ export const CONFIG = Object.freeze({
     { key: "play", name: "Google Play", call: "Get it on Google Play", href: null },
   ],
 
-  // Lizarding's Discord invite (a discord.gg link), null until the server is open
-  discord: null,
+  // Lizarding's Discord invite: Ian's permanent one (12 Nov 2026: never expires, no use limit, lands in #general)
+  discord: "https://discord.gg/wezehuCvbD",
 
   // the socials (marketing/social-handle-sweep.md, all @LizardingGame), as the web game has them
   socials: [
