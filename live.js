@@ -1,7 +1,7 @@
 // Live now and Coming up: the streams the platform lists (sites/lizarding/backend.sql,
 // lizarding_live and lizarding_coming_up), drawn as cards, one tap to watch.
 
-import { when, viewers } from "./platform.js?v=1c1e037b08cd";
+import { when, viewers } from "./platform.js?v=479b29e76eca";
 
 export function el(tag, attrs = {}, ...children) {
   const node = document.createElement(tag);

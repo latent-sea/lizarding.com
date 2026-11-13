@@ -1,13 +1,13 @@
 // lizarding.com's page: what config.js names, drawn in; who is live; the newsletter's form.
 
-import { CONFIG } from "./config.js?v=1c1e037b08cd";
-import { platform } from "./platform.js?v=1c1e037b08cd";
-import { el, followLive } from "./live.js?v=1c1e037b08cd";
-import { newsletter, WORDS } from "./newsletter.js?v=1c1e037b08cd";
+import { CONFIG } from "./config.js?v=479b29e76eca";
+import { platform } from "./platform.js?v=479b29e76eca";
+import { el, followLive } from "./live.js?v=479b29e76eca";
+import { newsletter, WORDS } from "./newsletter.js?v=479b29e76eca";
 
 // ?standin plays against the stand-in platform (tests/standin.js), for a person to try; ?probe walks the page
 const asked = new URLSearchParams(location.search);
-if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=1c1e037b08cd")).standIn();
+if (asked.has("probe") || asked.has("standin")) await (await import("./tests/standin.js?v=479b29e76eca")).standIn();
 
 function storeButton(store) {
   const face = [el("span", { class: "Call" }, store.call), el("span", { class: "Sub" }, store.href ? store.name : "Store page coming soon")];
@@ -27,6 +27,7 @@ function loopCard(loop) {
 export function draw(doc = document) {
   doc.getElementById("stores").replaceChildren(...CONFIG.stores.map(storeButton));
   doc.getElementById("play").href = CONFIG.play;
+  doc.getElementById("point-list").replaceChildren(...CONFIG.points.map((p) => el("li", { class: "Point" }, el("strong", {}, p.head), el("span", {}, p.said))));
   doc.getElementById("loop-grid").replaceChildren(...CONFIG.loops.map(loopCard));
   doc.getElementById("socials").replaceChildren(...CONFIG.socials.map((s) =>
     el("a", { class: "Social", href: s.href, target: "_blank", rel: "noopener", "aria-label": `Lizarding on ${s.name}` }, el("img", { src: s.icon, alt: "" }), el("span", {}, s.name))));
@@ -81,6 +82,6 @@ followLive(document.getElementById("live-grid"), platform(CONFIG.platform), {
 });
 
 if (asked.has("probe")) {
-  const { Probe } = await import("./probe.js?v=1c1e037b08cd");
+  const { Probe } = await import("./probe.js?v=479b29e76eca");
   new Probe(document).run();
 }

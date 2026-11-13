@@ -26,14 +26,29 @@ export const CONFIG = Object.freeze({
     { name: "Reddit", icon: "art/icons/reddit.svg", href: "https://www.reddit.com/r/Lizarding" },
   ],
 
+  // The selling points (Ian, 13 Nov: "Need these points surfaced in general. But also on website in the adverts and
+  // front page"), in marketing/positioning.md's words, a band right under the hero: each a few words, and a line.
+  // 6 biomes and 60 stages counted from product/stages/ (60 definitions, ten in each of six biomes). The web game's
+  // advert carries the same heads (sites/lizarding/promo.js POINTS; a test holds them together).
+  points: [
+    { head: "Procedurally generated lizards", said: "No two alike." },
+    { head: "6 biomes, 60 stages", said: "Ten stages in each biome." },
+    { head: "Inverse-kinematics animation", said: "Every lizard moves on its own body." },
+    { head: "A deep simulation", said: "Every race is run, not scripted." },
+    { head: "Genetic simulation", said: "Genes build body and mind, and pass to the young." },
+    { head: "Ancestry counts", said: "A lizard's family shapes what it is." },
+    { head: "Inbreeding degenerates", said: "Breed too close, and it shows." },
+    { head: "No race or form is ever faked", said: "Every figure comes from races really run." },
+  ],
+
   // The gameplay loops, one for each side of the game the adverts show
   // (release plan, 2026-11-10). Until a loop is captured, its picture stands
   // in: `video` is then the loop's file in art/loops/ (an MP4, muted,
   // about 10 seconds), and the picture becomes its poster.
   loops: [
-    { key: "chaos", heading: "The chaos", said: "Ten lizards on one stage: they leap, swim, sprint and pick fights. No two races play out the same.", art: "art/jungle-canopy.jpg", video: null },
-    { key: "genes", heading: "From the genes up", said: "Each lizard's genes build its body and its mind: how it runs, when it sprints, whether it starts a fight. And they pass to its young.", art: "art/highrise-moon.jpg", video: null },
-    { key: "form", heading: "Form that's true", said: "Every figure on the race card comes from races run by the same simulation you watch. Reading form works because form is real.", art: "art/race-card.jpg", video: null },
+    { key: "chaos", heading: "The chaos", said: "Ten procedurally generated lizards on one of 60 stages across 6 biomes: each moves on its own body as it leaps, swims, sprints and picks fights. No two races play out the same.", art: "art/jungle-canopy.jpg", video: null },
+    { key: "genes", heading: "From the genes up", said: "Each lizard's genes build its body and its mind: how it runs, when it sprints, whether it starts a fight. They pass to its young, ancestry counts, and inbreeding degenerates.", art: "art/highrise-moon.jpg", video: null },
+    { key: "form", heading: "Form that's true", said: "Every figure on the race card comes from races run by the same deep simulation you watch. No race or form is ever faked: reading form works because form is real.", art: "art/race-card.jpg", video: null },
     { key: "ladder", heading: "Battle the ladder", said: "Pick five of your lizards for each of six races against another player. The most points moves you up the ladder.", art: "art/wales-finish.jpg", video: null },
     { key: "bet", heading: "Back a winner", said: "Study the field, back a lizard to win or to place, and scream it home. Play money only.", art: "art/big-dive.jpg", video: null },
   ],
