@@ -7,14 +7,14 @@
 // the provider and answers a session (platform/functions/streamers). Only the
 // refresh token is kept, in this browser.
 
-import { CONFIG } from "../config.js?v=e8dea6a327a1";
-import { platform, signInAddress, newState, rememberAsked, takeReturn, keptRefresh, keepRefresh, forgetRefresh, when, localInput } from "../platform.js?v=e8dea6a327a1";
-import { el, followLive, drawComing, safeUrl } from "../live.js?v=e8dea6a327a1";
-import { newsletter, question, addressForm, stateWords } from "../newsletter.js?v=e8dea6a327a1";
+import { CONFIG } from "../config.js?v=bbe266fda68c";
+import { platform, signInAddress, newState, rememberAsked, takeReturn, keptRefresh, keepRefresh, forgetRefresh, when, localInput } from "../platform.js?v=bbe266fda68c";
+import { el, followLive, drawComing, safeUrl } from "../live.js?v=bbe266fda68c";
+import { newsletter, question, addressForm, stateWords } from "../newsletter.js?v=bbe266fda68c";
 
 const asked = new URLSearchParams(location.search);
 const probing = asked.has("probe");
-if (probing || asked.has("standin")) await (await import("../tests/standin.js?v=e8dea6a327a1")).standIn();
+if (probing || asked.has("standin")) await (await import("../tests/standin.js?v=bbe266fda68c")).standIn();
 
 const NAMES = { twitch: "Twitch", youtube: "YouTube" };
 
@@ -228,6 +228,6 @@ const page = new Streamers(document, probing ? { go: (url) => { globalThis.__wen
 await page.start();
 
 if (probing) {
-  const { Probe } = await import("./probe.js?v=e8dea6a327a1");
+  const { Probe } = await import("./probe.js?v=bbe266fda68c");
   await new Probe(document, page).run();
 }

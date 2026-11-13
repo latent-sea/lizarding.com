@@ -47,7 +47,10 @@ export const CONFIG = Object.freeze({
   // about 10 seconds), and the picture becomes its poster.
   loops: [
     { key: "chaos", heading: "The chaos", said: "Ten procedurally generated lizards on one of 60 stages across 6 biomes: each moves on its own body as it leaps, swims, sprints and picks fights. No two races play out the same.", art: "art/jungle-canopy.jpg", video: null },
+    // Ian, 13 Nov, on the two pictures #239 took off: "I want them back in, add taglines for them"
+    { key: "fights", heading: "Knocked off the deck", said: "One shove under the Highrise moon can decide a race. Every fight is simulated, never scripted.", art: "art/highrise-moon.jpg", video: null },
     { key: "genes", heading: "From the genes up", said: "Each lizard's genes build its body and its mind: how it runs, when it sprints, whether it starts a fight. They pass to its young, ancestry counts, and inbreeding degenerates.", art: "art/lizard-look.jpg", video: null },
+    { key: "strides", heading: "Every stride its own", said: "Inverse-kinematics animation moves every lizard on its own body: no two run alike.", art: "art/sprint.jpg", video: null },
     { key: "form", heading: "Form that's true", said: "Every figure on the race card comes from races run by the same deep simulation you watch. No race or form is ever faked: reading form works because form is real.", art: "art/race-card.jpg", video: null },
     { key: "ladder", heading: "Battle the ladder", said: "Pick five of your lizards for each of six races against another player. The most points moves you up the ladder.", art: "art/battle-grid.jpg", video: null },
     { key: "bet", heading: "Back a winner", said: "Study the field, back a lizard to win or to place, and scream it home. Play money only.", art: "art/big-dive.jpg", video: null },

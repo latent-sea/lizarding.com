@@ -163,3 +163,10 @@ input:focus-visible, .Button:focus-visible, a:focus-visible { outline: 2px solid
 .Point strong { color: var(--amber); font-size: 1.02rem; line-height: 1.3; }
 .Point span { color: var(--cream); font-size: 0.92rem; }
 @media (max-width: 30rem) { .PointList { grid-template-columns: 1fr 1fr; gap: 8px; } .Point { padding: 8px 10px; } .Point strong { font-size: 0.95rem; } .Point span { font-size: 0.85rem; } }
+
+/* seven loops since Ian's two came back (13 Nov): on a wide screen four to a row and the short row centred, never
+   one card left alone at the end; a phone keeps one column */
+@media (min-width: 64rem) {
+  .LoopGrid { display: flex; flex-wrap: wrap; justify-content: center; }
+  .LoopGrid .Loop { flex: 0 1 calc((100% - 3 * var(--gap)) / 4); }
+}
